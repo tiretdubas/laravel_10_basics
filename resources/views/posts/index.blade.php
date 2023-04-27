@@ -102,6 +102,7 @@
                 </article>
                 {{-- Fin du post --}}
                 @endforeach
+                {{ $posts->links() }}
             </div>
         </main>
     </div>
