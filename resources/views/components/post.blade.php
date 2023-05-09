@@ -10,10 +10,13 @@
         <a href="" class="underline font-bold text-slate-900 text-lg">{{ $post->category->name }}</a>
         @endif
         <h1 class="font-bold text-slate-900 text-3xl lg:text-5xl leading-tight">{{ $post->title }}</h1>
+        @if ($post->tags->isNotEmpty())
         <ul class="flex flex-wrap gap-2">
-            <li><a href="" class="px-3 py-1 bg-indigo-700 text-indigo-50 rounded-full text-sm">Tag 1</a></li>
-            <li><a href="" class="px-3 py-1 bg-indigo-700 text-indigo-50 rounded-full text-sm">Tag 2</a></li>
+            @foreach ($post->tags as $tag)
+            <li><a href="" class="px-3 py-1 bg-indigo-700 text-indigo-50 rounded-full text-sm">{{ $tag->name }}</a></li>
+            @endforeach
         </ul>
+        @endif
         <p class="text-xl lg:text-2xl text-slate-600">
             @if ($list)
             {{ $post->excerpt }}
