@@ -7,7 +7,7 @@
     </div>
     <div class="flex flex-col items-start mt-5 space-y-5 lg:w-7/12 lg:mt-0 lg:ml-12">
         @if ($post->category)
-        <a href="" class="underline font-bold text-slate-900 text-lg">{{ $post->category->name }}</a>
+        <a href="{{ route('posts.byCategory', ['category' => $post->category]) }}" class="underline font-bold text-slate-900 text-lg">{{ $post->category->name }}</a>
         @endif
         <h1 class="font-bold text-slate-900 text-3xl lg:text-5xl leading-tight">{{ $post->title }}</h1>
         @if ($post->tags->isNotEmpty())

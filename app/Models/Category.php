@@ -10,6 +10,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
