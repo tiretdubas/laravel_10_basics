@@ -20,11 +20,14 @@
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-                <form class="space-y-6" action="{{ $action }}" method="POST" novalidate>
-                    {{ $slot }}
+                <form action="{{ $action }}" method="POST" novalidate>
+                    @csrf
+                    <div class="space-y-6">
+                        {{ $slot }}
 
-                    <div>
-                        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ $submitMessage }}</button>
+                        <div>
+                            <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ $submitMessage }}</button>
+                        </div>
                     </div>
                 </form>
             </div>
