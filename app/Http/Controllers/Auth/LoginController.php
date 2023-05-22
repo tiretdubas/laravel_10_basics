@@ -13,7 +13,8 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except('logout');
+        $this->middleware('auth')->only('logout');
     }
 
     public function showLoginForm(): View
@@ -37,5 +38,16 @@ class LoginController extends Controller
         return back()->withErrors([
             'email' => 'Identifiants erronés.',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
