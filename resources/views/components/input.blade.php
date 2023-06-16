@@ -30,4 +30,11 @@
     @if ($help)
     <p class="mt-2 text-sm text-gray-500">{{ $help }}</p>
     @endif
+
+    @if ($type === 'file' && $value)
+    <p class="mt-3 text-sm text-gray-500">Fichier actuel : {{ $value }}</p>
+    @if ($isImage())
+    <img class="mt-2 max-w-full max-h-48" src="{{ asset('storage/' . $value) }}" alt="Image {{ $value }}">
+    @endif
+    @endif
 </div>
